@@ -29,8 +29,10 @@ module.exports = function(db){
 
 	app.use(session({
 	  store: new FileStore(),
-	  resave: false,
-	  saveUninitialized: false,
+	  resave: true,
+	  rolling: true,
+	  saveUninitialized: true,
+	  maxAge:30*60*1000,
 	  secret: 'keyboard cat'
 	}));
 

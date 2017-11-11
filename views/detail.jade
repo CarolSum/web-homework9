@@ -1,0 +1,28 @@
+doctype html
+html
+	head
+		title Detail
+		meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+		link(rel='stylesheet',type='text/css', href='/stylesheets/signin.css')
+		script(type='text/javascript',src='https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js')
+	body
+		#container
+			#positioner
+				#dec1
+				#dec2
+				#dec3
+				#dec4
+				#dec5
+				#dec6
+				#left
+				#right
+					div(style='margin-top: 70px;')
+						h2 User-Info
+						p Here is your name, student id, phone and your <br> email.
+						div#user_info
+							p 姓名: #{username}
+							p 学号: #{id}
+							p 电话: #{phone}
+							p 邮箱: #{email}
+						div#logout_btn
+							a(href='/signout') Sign Out

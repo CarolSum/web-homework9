@@ -1,0 +1,42 @@
+doctype html
+html
+	head
+		title Register
+		meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+		link(rel='stylesheet',type='text/css', href='/stylesheets/signin.css')
+		script(type='text/javascript',src='https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js')
+		script(type='text/javascript',src='/javascripts/validate.js')
+		script(type='text/javascript',src='/javascripts/validator.js')
+	body
+		#container
+			#positioner
+				#dec1
+				#dec2
+				#dec3
+				#dec4
+				#dec5
+				#dec6
+				#left
+				#right
+					div(style='margin-top: 40px;')
+						h2 Register Now
+						if error
+							div#note #{error}
+						form(method='post')
+							input(class='input', type='text',name='username',placeholder='Username',value=user.username)
+							span(class='flag',id='s1')
+							input(class='input', type='text',name='id',placeholder='Your ID',value=user.id)
+							span(class='flag',id='s2')
+							input(class='input', type='text',name='phone',placeholder='Your Phone Number',value=user.phone)
+							span(class='flag',id='s3')
+							input(class='input', type='text',name='email',placeholder='Email',value=user.email)
+							span(class='flag',id='s4')
+							input(class='input', type='password',name='password',placeholder='Password',value=user.password)
+							span(class='flag',id='s5')
+							input(class='input', type='password',name='re_password',placeholder='Repeat Password',value=user.re_password)
+							span(class='flag',id='s6')
+							input(class='button', type='submit',name='',value='register  >',style='margin-top: 30px;')
+							input(class='button', type='reset',name='reset',value='reset',style='background-color: #d2a792;')
+						div#back
+							a(href='/signout')
+								img(src='/images/back.png',alt='back')

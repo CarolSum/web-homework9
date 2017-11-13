@@ -18,8 +18,11 @@ module.exports = function(db){
 	  var user = req.body;
 	  userManager.findUser(req.body.username, req.body.password)
 	    .then(function(user){
-	    	req.session.user = user;
-	    	res.redirect('/detail');
+	    	req.session.regenerate(function(err){
+	    		if(err) console.log('req session regenerate failed');
+	    		req.session.user = user;
+	    		res.redirect('/detail');
+	    	});
 	    })
 	    .catch(function(error){
 	    	res.render('signup', {user:user, error:'用户名不存在或密码错误'});
@@ -48,12 +51,22 @@ module.exports = function(db){
 	});
 
 	router.get('/signout', function(req, res, next) {
+		/*
 	  console.log('begin delete session.user');
 	  console.log(req.session.user);
 	  delete req.session.user;
 	  console.log('after delete session.user');
 	  console.log(req.session.user);
 	  res.redirect('/');
+		*/
+	  req.session.destroy(function(err){
+	  	if(err){
+	  		return;
+	  	}
+	  	res.clearCookie('skey');
+	  	res.redirect('/');
+	  });
+
 	});
 
 

@@ -10,6 +10,7 @@ var http = require('http');
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 
+var identityKey = 'skey';
 
 module.exports = function(db){
 	var index = require('./routes/index')(db);
@@ -24,16 +25,18 @@ module.exports = function(db){
 	app.use(logger('dev'));
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: false }));
-	app.use(cookieParser());
+	app.use(cookieParser(''));
 	app.use(express.static(path.join(__dirname, 'public')));
 
 	app.use(session({
+	  name: identityKey,
+	  secret: 'lijiehong',
 	  store: new FileStore(),
-	  resave: true,
-	  rolling: true,
-	  saveUninitialized: true,
-	  maxAge:30*60*1000,
-	  secret: 'keyboard cat'
+	  resave: false,
+	  saveUninitialized: false,
+	  cookie:{
+	  	maxAge:3*60*1000
+	  }
 	}));
 
 	app.use('/', index);

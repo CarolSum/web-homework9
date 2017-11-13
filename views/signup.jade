@@ -1,29 +1,29 @@
 doctype html
 html
-	head
-		title Register
-		meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
-		link(rel='stylesheet',type='text/css', href='/stylesheets/signin.css')
-		script(type='text/javascript',src='https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js')
-	body
-		#container
-			#positioner
-				#dec1
-				#dec2
-				#dec3
-				#dec4
-				#dec5
-				#dec6
-				#left
-				#right
-					div(style='margin-top: 90px;')
-						h2 Login
-						p Enter your username and password to login.<br> You can also register as a new account.
-						if error
-							div#note #{error}
-						form(method='post')
-							input(class='lg_input', type='text',name='username',placeholder='Username', value='#{user.username}')
-							input(class='lg_input', type='password',name='password',placeholder='Password',value='#{user.password}')
-							input(class='button', type='submit',name='',value='login >',style='margin-top: 30px;')
-							div#reg_btn
-								a(href='/regist') Register
+  head
+    title Register
+    meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+    link(rel='stylesheet',type='text/css', href='/stylesheets/signin.css')
+    script(type='text/javascript',src='https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js')
+  body
+    #container
+      #positioner
+        #dec1
+        #dec2
+        #dec3
+        #dec4
+        #dec5
+        #dec6
+        #left
+        #right
+          div(style='margin-top: 90px;')
+            h2 Login
+            p Enter your username and password to login.<br> You can also register as a new account.
+            if error
+              div#note #{error}
+            form(method='post')
+              input(class='lg_input', type='text',name='username',placeholder='Username', value='#{user.username}')
+              input(class='lg_input', type='password',name='password',placeholder='Password',value='#{user.password}')
+              input(class='button', type='submit',name='',value='login >',style='margin-top: 30px;')
+              div#reg_btn
+                a(href='/regist') Register
